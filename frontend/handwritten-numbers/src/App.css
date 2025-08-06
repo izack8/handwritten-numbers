@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+body {
+    min-height: 100vh;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh; 
+    background-image: url('/images/canva_bg.png'); /* Remove /public */
+    background-size: cover;
+    background-position: left center;
+    background-repeat: no-repeat;
+    z-index: -12;
+    overflow: overlay;
+}
