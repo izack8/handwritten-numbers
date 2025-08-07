@@ -10,7 +10,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["https://caasi.vercel.app", "https://www.izack.dev", 
-                   "https://izack.dev", "http://localhost:5173", "https://handwritten-digits.izack.dev/"],  
+                   "https://izack.dev", "http://localhost:5173", "https://handwritten-digits.izack.dev"],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
