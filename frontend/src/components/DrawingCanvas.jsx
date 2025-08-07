@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
+import { API_ENDPOINTS } from '../config';
 
 const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 }) => {
   const canvasRef = useRef(null);
@@ -108,7 +109,7 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
 
       try {
         // Send the FormData to the FastAPI endpoint
-        const response = await fetch('http://localhost:8000/predict/', {
+        const response = await fetch(API_ENDPOINTS.predict, {
           method: 'POST',
           body: formData, // Send as FormData
         });

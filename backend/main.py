@@ -21,7 +21,7 @@ async def health_check():
     return {"status": "healthy", "message": "API is running"}
 
 
-@app.post("/predict/")
+@app.post("/api/predict")
 async def predict_digit(file: UploadFile = File(...)):
     try:
 
