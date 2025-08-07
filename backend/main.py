@@ -24,15 +24,13 @@ async def health_check():
 @app.post("/predict/")
 async def predict_digit(file: UploadFile = File(...)):
     try:
-        # Load the uploaded image
+
         image = Image.open(file.file)
 
-        # Invert image to handle white background
         if image.mode != 'L':
             image = image.convert('L')
         image = ImageOps.invert(image)
 
-        # Perform inference
         prediction = predict(image)
         print(f"Prediction received: {prediction}")
 
