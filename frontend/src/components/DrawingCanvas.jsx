@@ -32,13 +32,13 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
     const scaleY = canvas.height / rect.height;
 
     if (e.touches && e.touches[0]) {
-      // Touch event
+      
       return {
         x: (e.touches[0].clientX - rect.left) * scaleX,
         y: (e.touches[0].clientY - rect.top) * scaleY,
       };
     } else {
-      // Mouse event
+      
       return {
         x: (e.clientX - rect.left) * scaleX,
         y: (e.clientY - rect.top) * scaleY,
@@ -102,16 +102,14 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    // Convert the canvas content to a Blob
     canvas.toBlob(async (blob) => {
       const formData = new FormData();
-      formData.append('file', blob, 'drawing.png'); // Append the Blob as a file
+      formData.append('file', blob, 'drawing.png'); 
 
       try {
-        // Send the FormData to the FastAPI endpoint
         const response = await fetch(API_ENDPOINTS.predict, {
           method: 'POST',
-          body: formData, // Send as FormData
+          body: formData, 
         });
 
         if (!response.ok) {
@@ -119,18 +117,18 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
         }
 
         const data = await response.json();
-        console.log('Prediction:', data.prediction); // Log the predicted digit
-        alert(`Predicted digit: ${data.prediction}`); // Show the prediction to the user
+        console.log('Prediction:', data.prediction); 
+        alert(`Predicted digit: ${data.prediction}`); 
+
       } catch (error) {
         console.error('Error during prediction:', error);
         alert('Failed to predict. Please try again.');
       }
-    }, 'image/png'); // Specify the image format
+    }, 'image/png'); 
   };
 
   return (
     <div className="flex flex-col items-center gap-5 p-10">
-      {/* Scale the canvas for better visibility */}
       <div
         style={{
           width: `${width * scale}px`,
