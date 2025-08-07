@@ -2,8 +2,7 @@ import torch
 import torch.nn as nn
 from torchvision import transforms
 from PIL import Image
-from model import Net  
-import matplotlib.pyplot as plt
+from .model import Net  
 from huggingface_hub import hf_hub_download, snapshot_download
 
 
