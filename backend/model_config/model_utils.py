@@ -36,7 +36,7 @@ def predict(image: Image.Image):
         return {"prediction": "Blank canvas detected"}
     
     image_tensor = transform_with_normalize(image).unsqueeze(0).to(device)
-    print(f"Input tensor (normalized): {image_tensor}")
+    
     
     model = load_model(model_path)
     output = model(image_tensor)
