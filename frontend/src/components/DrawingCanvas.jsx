@@ -128,7 +128,7 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
   };
 
   return (
-    <div className="flex flex-col items-center gap-5">
+    <div className="flex flex-col items-center gap-5 p-10">
       {/* Scale the canvas for better visibility */}
       <div
         style={{
@@ -159,16 +159,16 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
           onTouchEnd={stopDrawing}
         />
       </div>
-      <div className="flex flex-row gap-4">
+      <div className="mt-5 flex flex-row gap-4">
         <button
           onClick={predict}
-          className="px-5 py-2.5 text-base bg-red-500 text-white border-none rounded cursor-pointer transition-colors duration-300 hover:bg-red-600"
+          className="w-30 px-5 py-2.5 text-base bg-red-500 text-white border-none rounded cursor-pointer transition-colors duration-300 hover:bg-red-600"
         >
           Predict
         </button>
         <button
           onClick={clearCanvas}
-          className="px-5 py-2.5 text-base bg-red-500 text-white border-none rounded cursor-pointer transition-colors duration-300 hover:bg-red-600"
+          className="w-30 px-5 py-2.5 text-base bg-red-500 text-white border-none rounded cursor-pointer transition-colors duration-300 hover:bg-red-600"
         >
           Clear
         </button>
