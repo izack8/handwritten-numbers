@@ -24,3 +24,7 @@ dist-ssr
 *.sw?
 
 experiments
+*.pth
+*.pt
+/models/
+__pycache__
