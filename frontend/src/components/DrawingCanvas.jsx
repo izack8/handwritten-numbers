@@ -12,13 +12,11 @@ const DrawingCanvas = ({ onDrawingComplete, width = 28, height = 28, scale = 10 
 
     const context = canvas.getContext('2d');
 
-    // Set up canvas
     context.lineCap = 'round';
     context.lineJoin = 'round';
-    context.lineWidth = 1; // Adjust line width for smaller canvas
+    context.lineWidth = 1; 
     context.strokeStyle = '#000000';
 
-    // Clear canvas with white background
     context.fillStyle = '#ffffff';
     context.fillRect(0, 0, width, height);
   }, [width, height]);
