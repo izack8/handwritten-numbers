@@ -4,10 +4,12 @@ from torchvision import transforms
 from PIL import Image
 from model import Net  
 import matplotlib.pyplot as plt
+from huggingface_hub import hf_hub_download, snapshot_download
 
-# Load the model
+
+# load the model. the model is cached locally after the first download
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model_path = "./model_weights/model.pth"
+model_path = hf_hub_download(repo_id="izack8/mnist-handwritten-digits-recognition", filename="model.pth")
 
 def load_model(path):
     model = Net().to(device)
@@ -30,12 +32,10 @@ def predict(image: Image.Image):
         transforms.Normalize((0.1307,), (0.3081,)) 
     ])
     
-    # Apply transform without normalization to check for blank canvas
     image_tensor_no_normalize = transform_no_normalize(image).unsqueeze(0).to(device)
     if image_tensor_no_normalize.sum() == 0:
         return {"prediction": "Blank canvas detected"}
     
-    # Apply transform with normalization for prediction
     image_tensor = transform_with_normalize(image).unsqueeze(0).to(device)
     print(f"Input tensor (normalized): {image_tensor}")
     

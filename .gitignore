@@ -28,3 +28,4 @@ experiments
 *.pt
 model_weights
 __pycache__
+.env
